@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="cz">
+  <head>
+    <title>&lt;model-viewer&gt; example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="demo-styles.css">
+    <link rel="stylesheet" href="popups.css">
+    <link rel="stylesheet" href="right_button.css">
+    
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+    
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+<!--     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script> -->
+
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+<!--     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script> -->
+
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+<!--     <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script> -->
+    
+    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+    <script defer src="zoomCamera.js"></script>
+
+  </head> 
+<body>
+  <div id="card">
+    <model-viewer id="model_parkan"
+                  loading="eager"
+                  minimumRenderScale ="1"
+                  src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_parkan.glb?v=1631686645715"
+                  ios-src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkourimska_brana.usdz?v=1628592919516"
+                  poster="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363"
+                  alt="A 3D model of an astronaut"
+                  shadow-intensity="1"
+                  ar ar-modes="webxr scene-viewer quick-look"
+                  camera-controls alt="A 3D model carousel"
+                  camera-controls camera-target="25m 20m 65m"
+                  camera-controls max-camera-orbit ="Infinity 100deg 300m"
+                  camera-controls min-camera-orbit ="-Infinity -20deg 20m">
+      <button id = "button1" data-modal-target="#kostnice" slot="hotspot-hrad" class="slideRight" data-position="50 5 100"  onclick="zoomCamera(this,'button1_','#model_parkan','50m 5m 100m','80deg 80deg 300m')">1</button>
+      <button id = "button2" data-modal-target="#muzeum" slot="hotspot-basta" class="slideRight" data-position="75 5 75"  onclick="zoomCamera(this,'button2_','#model_parkan','75m 5m 75m','80deg 80deg 300m')">2</button>
+      <button id = "button3" data-modal-target="#wc" slot="hotspot-synagoga" class="slideRight" data-position="85 -2 74"  onclick="zoomCamera(this,'button3_','#model_parkan','85m -2m 74m','80deg 80deg 300m')">3</button>
+      <button id = "button4" data-modal-target="#vez" slot="hotspot-kourimska" class="slideRight" data-position="110 -2 45"  onclick="zoomCamera(this,'button4_','#model_parkan','110m -2m 45m','80deg 80deg 300m')">4</button>
+      <button id = "button5" data-modal-target="#branka" slot="hotspot-caslavska" class="slideRight" data-position="42 -0.5 101"  onclick="zoomCamera(this,'button5_','#model_parkan','42m -0.5m 101m','80deg 80deg 300m')">5</button>
+      <button id = "button6" data-modal-target="#vez1" slot="hotspot-labska" class="slideRight" data-position="-15 5 76"  onclick="zoomCamera(this,'button6_','#model_parkan','-15m 5m 76m','80deg 80deg 300m')">6</button>
+      <div class="sliderRight">
+        <div class="slidesRight">
+          <button id = "button1_" data-modal-target="#kostnice" class="slideRight" onclick="zoomCamera(this,'button1','#model_parkan','50m 5m 100m','80deg 80deg 300m')">1</button>
+          <button id = "button2_" data-modal-target="#muzeum" class="slideRight" onclick="zoomCamera(this,'button2','#model_parkan','75m 5m 75m','80deg 80deg 300m')">2</button>
+          <button id = "button3_" data-modal-target="#wc" class="slideRight" onclick="zoomCamera(this,'button3','#model_parkan','85m -2m 74m','80deg 80deg 300m')">3</button>
+          <button id = "button4_" data-modal-target="#vez" class="slideRight" onclick="zoomCamera(this,'button4','#model_parkan','110m -2m 45m','80deg 80deg 300m')">4</button>
+          <button id = "button5_" data-modal-target="#branka" class="slideRight" onclick="zoomCamera(this,'button5','#model_parkan','42m -0.5m 101m','80deg 80deg 300m')">5</button>
+          <button id = "button6_" data-modal-target="#vez1" class="slideRight" onclick="zoomCamera(this,'button6','#model_parkan','-15m 5m 76m','80deg 80deg 300m')">6</button>
+         </div>
+      </div>
+      
+    <!-- Popups in main modelviewer -->
+    <div class="modal" id="kostnice">
+      <div class="modal-header">
+        <div class="title">Kostnice</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      kostnice
+        <a href="kostnice.html">Více</a>
+      </div>
+    </div>
+    <div class="modal" id="muzeum">
+      <div class="modal-header">
+        <div class="title">Muzeum</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      muzeum
+      </div>
+    </div>
+    <div class="modal" id="wc">
+      <div class="modal-header">
+        <div class="title">WC</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      WC
+      </div>
+    </div>
+    <div class="modal" id="vez">
+      <div class="modal-header">
+        <div class="title">Hradební věž</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      hradební věž
+      </div>
+    </div>
+    <div class="modal" id="branka">
+      <div class="modal-header">
+        <div class="title">Hradební branka</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      hradební branka
+      </div>
+    </div>
+    <div class="modal" id="vez1">
+      <div class="modal-header">
+        <div class="title">Stará farní škola</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  
+       <div class="slider">
+        <div class="slides">
+          <button class="slide selected" onclick="switchSrc(this, '#model_parkan', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_parkan.glb?v=1631686645715')">
+            před obnovou
+          </button>
+          <button class="slide" onclick="switchSrc(this, '#model_parkan', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_parkan.glb?v=1631686645715')">
+            po obnově
+          </button>
+         </div>
+      </div>
+    </model-viewer> 
+    
+    
+    <section class="attribution">
+      <span>
+        <h1>Kolín - parkán u kostela </h1>
+        <a href="index.html">zpátky do města</a>
+        <a href="kostnice.html">Kostnice</a>
+      </span>
+    </section>
+  </div>
+  
+  <script type="module">
+    
+    const posters = ['https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta6.jpg?v=1631713304938',
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta7.jpg?v=1631713313438', 
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta.jpg?v=1631713457285',
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta1.jpg?v=1631713460874',
+                    'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta3.jpg?v=1631713464690'];
+    
+    let i = 0;
+    const modelViewer1 = document.querySelector('#model_parkan');
+    setInterval(() => modelViewer1.setAttribute('poster', `${posters[++i % 5]}`), 2500);
+
+</script>
+  
+  <!-- 💁 Include both scripts below to support all browsers! -->
+
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+  </script>
+</body>
+</html>

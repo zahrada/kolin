@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        position: fixed;
+        cursor: default;
+        width: 100%;
+        height: 100%;
+      }
+      #panorama {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+</head>
+<body>
+
+<div id="panorama"></div>
+<script>
+pannellum.viewer('panorama', {
+      "default": {
+        "firstScene": "vstup",
+        "author": "David Zahradnik",
+        "autoLoad": true
+    },
+    
+    "scenes": {
+        "vstup": {
+            "title": "Vstup z města",
+                "type": "equirectangular",
+                "pitch": 0,
+                "yaw": 0,
+                "hfov": 10,
+                "autoLoad": true,
+                "orientationOnByDefault": true,
+                "showZoomCtrl": false,
+                "panorama": "https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad_4k_2.jpg?v=1638031407557",
+                "showFullscreenCtrl": true,
+            "hotSpots": [
+              /*
+                {
+                    "pitch": 60,
+                    "yaw": 60,
+                    "type": "info",
+                    "text": "The skylight is supported by an iron truss and has a second, peaked skylight over it."
+                },
+                {
+                    "pitch": 10,
+                    "yaw": 25,
+                    "type": "info",
+                    "text": "Much of the library was constructed from cast-iron to reduce the risk of fire."
+                },
+                {
+                    "pitch": 0,
+                    "yaw": 8,
+                    "type": "info",
+                    "text": "The lighting was originally gas."
+                },
+                {
+                    "pitch": -3,
+                    "yaw": 115,
+                    "type": "info",
+                    "text": "The JHU library catalog contains the Peabody Library’s holdings.",
+                    "URL": "https://catalog.library.jhu.edu/"
+                },
+                */
+                {
+                    "pitch": 0,
+                    "yaw": -70,
+                    "type": "scene",
+                    "text": "Nádvoří",
+                    "sceneId": "nadvori1"
+                }
+            ]
+        },
+
+        "nadvori1": {
+            "title": "Nádvoří1",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 0,
+            "hfov": 10,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad_4k_1.jpg?v=1638031403379",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+                {
+                    "pitch": 0,
+                    "yaw": 110,
+                    "type": "scene",
+                    "text": "Vstup k městu",
+                    "sceneId": "vstup"
+                },
+                {
+                    "pitch": -5,
+                    "yaw": 25,
+                    "type": "scene",
+                    "text": "Nádvoří",
+                    "sceneId": "nadvori2"
+                },
+                {
+                    "pitch": -3,
+                    "yaw": -65,
+                    "type": "scene",
+                    "text": "Most k předhradí",
+                    "sceneId": "most"
+                }
+            ]
+        },
+      
+        "nadvori2": {
+            "title": "Nádvoří1",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 0,
+            "hfov": 10,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad_4k_3.jpg?v=1638031421863",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+                {
+                    "pitch": -3,
+                    "yaw": 200,
+                    "type": "scene",
+                    "text": "Nádvoří",
+                    "sceneId": "nadvori1"
+                }
+            ]
+        },
+        
+        "most": {
+            "title": "Most k předhradí",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 0,
+            "hfov": 10,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad_4k_4.jpg?v=1638031436308",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+                {
+                    "pitch": 0,
+                    "yaw": 110,
+                    "type": "scene",
+                    "text": "Nádvoří",
+                    "sceneId": "nadvori1"
+                },
+                {
+                    "pitch": -5,
+                    "yaw": -70,
+                    "type": "scene",
+                    "text": "Předhradí",
+                    "sceneId": "predhradi"
+                }
+            ]
+        },
+        "predhradi": {
+            "title": "Předhradí",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 0,
+            "hfov": 10,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad_4k_5.jpg?v=1638031420967",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+                {
+                    "pitch": -3,
+                    "yaw": 115,
+                    "type": "scene",
+                    "text": "Most k předhradí",
+                    "sceneId": "most"
+                },
+                {
+                    "pitch": -3,
+                    "yaw": -75,
+                    "type": "scene",
+                    "text": "Vstup z vesnice",
+                    "sceneId": "vstup2"
+                }
+            ]
+        },
+        "vstup2": {
+            "title": "Vstup z vesnice",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 0,
+            "hfov": 10,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad_4k_6.jpg?v=1638031424595",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+                {
+                    "pitch": 0,
+                    "yaw": 110,
+                    "type": "scene",
+                    "text": "Předhradí",
+                    "sceneId": "predhradi"
+                }
+            ]
+        },
+    }
+});
+  
+</script>
+
+</body>
+</html>

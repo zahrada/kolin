@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="cz">
+  <head>
+    <title>&lt;model-viewer&gt; example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="demo-styles.css">
+    <link rel="stylesheet" href="popups.css">
+    <link rel="stylesheet" href="right_button.css">
+    
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+    
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+<!--     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script> -->
+
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+<!--     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script> -->
+
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+<!--     <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script> -->
+    
+    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+    <script defer src="zoomCamera.js"></script>
+
+  </head> 
+<body>
+  <div id="card">
+    <!-- All you need to put beautiful, interactive 3D content on your site: -->
+    <model-viewer id="model_hrad"
+                  loading="eager"
+                  minimumRenderScale ="1"
+                  src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad.glb?v=1630910215538"
+                  ios-src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkourimska_brana.usdz?v=1628592919516"
+                  poster="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363"
+                  alt="A 3D model of an astronaut"
+                  shadow-intensity="1"
+                  ar ar-modes="webxr scene-viewer quick-look"
+                  camera-controls alt="A 3D model carousel"
+                     camera-controls camera-target="-100m 0m -230m"
+                  camera-controls camera-orbit =  "330deg 75deg 300m"
+                  camera-controls max-camera-orbit ="Infinity 80deg 150m"
+                  camera-controls min-camera-orbit ="-Infinity -20deg 20m"
+                  environment-image = "neutral">
+      <div id="overlay"></div>
+      <button id = "button1" data-modal-target="#vstup" slot="hotspot-hrad" class="slideRight" data-position="-190 0 -265"  onclick="zoomCamera(this,'button1_','#model_hrad','-190m 0m -265m','80deg 80deg 300m')">1</button>
+      <button id = "button2" data-modal-target="#zamek" slot="hotspot-basta" class="slideRight" data-position="-104 0 -248"  onclick="zoomCamera(this,'button2_','#model_hrad','-104m 0m -248m','80deg 80deg 300m')">2</button>
+      <button id = "button3" data-modal-target="#vez" slot="hotspot-synagoga" class="slideRight" data-position="-85 0 -256"  onclick="zoomCamera(this,'button3_','#model_hrad','-85m 0m -256m','80deg 80deg 300m')">3</button>
+      <button id = "button4" data-modal-target="#vez1" slot="hotspot-kourimska" class="slideRight" data-position="-124 0 -201"  onclick="zoomCamera(this,'button4_','#model_hrad','-124m 0m -201m','80deg 80deg 300m')">4</button>
+      <button id = "button5" data-modal-target="#pivovar" slot="hotspot-caslavska" class="slideRight" data-position="-143 0 -288"  onclick="zoomCamera(this,'button5_','#model_hrad','-143m 0m -288m','80deg 80deg 300m')">5</button>
+      <button id = "button6" data-modal-target="#prazska" slot="hotspot-labska" class="slideRight" data-position="-111 0 -233"  onclick="zoomCamera(this,'button6_','#model_hrad','-111m 0m -233m','80deg 80deg 300m')">6</button>
+      <!-- 
+      <button id = "button7" data-modal-target="#radnice" slot="hotspot-radnice" class="slideRight" data-position="20 0 -170"  onclick="zoomCamera(this,'button7_','#model_hrad','20m 0m -170m','80deg 80deg 300m')">7</button>
+      <button id = "button8" data-modal-target="#kostel" slot="hotspot-kostel" class="slideRight" data-position="25 0 65" onclick="zoomCamera(this,'button8_','#model_hrad','25m 0m 65m','80deg 80deg 300m')">8</button>
+      <button id = "button9" data-modal-target="#prazska" slot="hotspot-prazska" class="slideRight" data-position="-151 0 -145" onclick="zoomCamera(this,'button9_','#model_hrad','-151m 0m -145m','80deg 80deg 300m')">9</button>
+      <button id = "button10" data-modal-target="#parkan" slot="hotspot-parkan" class="slideRight" data-position="70 0 120" onclick="zoomCamera(this,'button10,'#model_hrad','70m 0m 120m','80deg 80deg 300m')">10</button>
+      -->
+      <div class="sliderRight">
+        <div class="slidesRight">
+          <button id = "button1_" data-modal-target="#vstup" class="slideRight" onclick="zoomCamera(this,'button1','#model_hrad','-190m 0m -265m','80deg 80deg 300m')">1</button>
+          <button id = "button2_" data-modal-target="#zamek" class="slideRight" onclick="zoomCamera(this,'button2','#model_hrad','-104m 0m -248m','80deg 80deg 300m')">2</button>
+          <button id = "button3_" data-modal-target="#vez" class="slideRight" onclick="zoomCamera(this,'button3','#model_hrad','-85m 0m -256m','80deg 80deg 300m')">3</button>
+          <button id = "button4_" data-modal-target="#vez1" class="slideRight" onclick="zoomCamera(this,'button4','#model_hrad','-124m 0m -201m','80deg 80deg 300m')">4</button>
+          <button id = "button5_" data-modal-target="#pivovar" class="slideRight" onclick="zoomCamera(this,'button5','#model_hrad','-143m 0m -288m','80deg 80deg 300m')">5</button>
+          <button id = "button6_" data-modal-target="#prazska" class="slideRight" onclick="zoomCamera(this,'button6','#model_hrad','-111m 0m -233m','80deg 80deg 300m')">6</button>
+          <!-- 
+          <button id = "button7_" data-modal-target="#radnice" class="slideRight" onclick="zoomCamera(this,'button7','#model_hrad','20m 0m -170m','80deg 80deg 300m')">7</button>
+          <button id = "button8_" data-modal-target="#kostel" class="slideRight" onclick="zoomCamera(this,'button8','#model_hrad','25m 0m 65m','80deg 80deg 300m')">8</button>
+          <button id = "button9_" data-modal-target="#prazska" class="slideRight" onclick="zoomCamera(this,'button9','#model_hrad','-151m 0m -145m','80deg 80deg 200m')">9</button>
+          <button id = "button10_" data-modal-target="#parkan" class="slideRight" onclick="zoomCamera(this,'button10','#model_hrad','70m 0m 120m','80deg 80deg 200m')">10</button>
+           -->
+        </div>
+      </div>
+           <!-- Popups in main modelviewer -->
+    <div class="modal" id="vstup">
+      <div class="modal-header">
+        <div class="title">Původní vstup do předhradí</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+    <div class="modal" id="zamek">
+      <div class="modal-header">
+        <div class="title">Zámek</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+    <div class="modal" id="vez">
+      <div class="modal-header">
+        <div class="title">Hradební věž</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  <div class="modal" id="vez1">
+      <div class="modal-header">
+        <div class="title">Hradební věž</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  <div class="modal" id="pivovar">
+      <div class="modal-header">
+        <div class="title">Bývalý pivovar</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  <div class="modal" id="prazska">
+      <div class="modal-header">
+        <div class="title">Bývalá Pražská brána</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+      
+       <div class="slider">
+        <div class="slides">
+          <button class="slide" onclick="switchSrc(this,'#model_hrad', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad_vektor.glb?v=1630910856567')">
+            Historie
+          </button>
+          <button class="slide selected" onclick="switchSrc(this,'#model_hrad', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad.glb?v=1630910215538')">
+            Současnost
+          </button>
+         </div>
+      </div>
+    </model-viewer> 
+    
+    <section class="attribution">
+      <span>
+        <h1>Kolín - Zámek a pivovar</h1>
+        <a href="index.html">zpátky do města</a>
+      </span>
+    </section>
+  </div>
+  
+  <script type="module">
+    
+    const posters = ['https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fzamek.PNG?v=1630910400820',
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fhrad_preview.PNG?v=1630913121994', 
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fzamek_preview.PNG?v=1630913129656',
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363'];
+    
+    let i = 0;
+        const modelViewer1 = document.querySelector('#model_hrad');
+    setInterval(() => modelViewer1.setAttribute('poster', `${posters[++i % 4]}`), 3000);
+
+</script>
+  
+  <!-- 💁 Include both scripts below to support all browsers! -->
+
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+  </script>
+</body>
+</html>

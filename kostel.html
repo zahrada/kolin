@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="cz">
+  <head>
+    <title>&lt;model-viewer&gt; example</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="demo-styles.css">
+    <link rel="stylesheet" href="popups.css">
+    <link rel="stylesheet" href="right_button.css">
+    
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+    
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+<!--     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script> -->
+
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+<!--     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script> -->
+
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+<!--     <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script> -->
+    
+    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+    <script defer src="zoomCamera.js"></script>
+
+  </head> 
+<body>
+  <div id="card">
+    <!-- All you need to put beautiful, interactive 3D content on your site: -->
+    <model-viewer id="model_kostel"
+                  loading="eager"
+                  minimumRenderScale ="1"
+                  src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_kostel.glb?v=1631686617973"
+                  ios-src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkourimska_brana.usdz?v=1628592919516"
+                  poster="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363"
+                  alt="A 3D model of an astronaut"
+                  shadow-intensity="1"
+                  ar ar-modes="webxr scene-viewer quick-look"
+                  camera-controls alt="A 3D model carousel"
+                  camera-controls camera-target="25m 20m 65m"
+                  camera-controls max-camera-orbit ="Infinity 100deg 150m"
+                  camera-controls min-camera-orbit ="-Infinity -20deg 20m"
+                  environment-image = "neutral">
+      <div id="overlay"></div>
+      <button id = "button1" data-modal-target="#vstup" slot="hotspot-hrad" class="slideRight" data-position="9 2 58"  onclick="zoomCamera(this,'button1_','#model_kostel','9m 2m 58m','80deg 80deg 300m')">1</button>
+      <button id = "button2" data-modal-target="#vez" slot="hotspot-basta" class="slideRight" data-position="9 27 40"  onclick="zoomCamera(this,'button2_','#model_kostel','9m 27m 40m','80deg 80deg 300m')">2</button>
+      <button id = "button3" data-modal-target="#kaple" slot="hotspot-synagoga" class="slideRight" data-position="17 2 76"  onclick="zoomCamera(this,'button3_','#model_kostel','17m 2m 76m','80deg 80deg 300m')">3</button>
+      <button id = "button4" data-modal-target="#chor" slot="hotspot-kourimska" class="slideRight" data-position="49 12 76"  onclick="zoomCamera(this,'button4_','#model_kostel','49m 12m 76m','80deg 80deg 300m')">4</button>
+      <!-- 
+      <button id = "button5" data-modal-target="#caslavska" slot="hotspot-caslavska" class="slideRight" data-position="125 0 19"  onclick="zoomCamera(this,'button5_','#model_kostel','125m 0m 19m','80deg 80deg 300m')">5</button>
+      <button id = "button6" data-modal-target="#labska" slot="hotspot-labska" class="slideRight" data-position="204 0 -107"  onclick="zoomCamera(this,'button6_','#model_kostel','204m 0m -107m','80deg 80deg 300m')">6</button>
+      -->
+      <div class="sliderRight">
+        <div class="slidesRight">
+          <button id = "button1_" data-modal-target="#vstup" class="slideRight" onclick="zoomCamera(this,'button1','#model_kostel','9m 2m 58m','80deg 80deg 300m')">1</button>
+          <button id = "button2_" data-modal-target="#vez" class="slideRight" onclick="zoomCamera(this,'button2','#model_kostel','9m 27m 40m','80deg 80deg 300m')">2</button>
+          <button id = "button3_" data-modal-target="#kaple" class="slideRight" onclick="zoomCamera(this,'button3','#model_kostel','17m 2m 76m','80deg 80deg 300m')">3</button>
+          <button id = "button4_" data-modal-target="#chot" class="slideRight" onclick="zoomCamera(this,'button4','#model_kostel','49m 12m 76m','80deg 80deg 300m')">4</button>
+          <!-- 
+          <button id = "button5_" data-modal-target="#caslavska" class="slideRight" onclick="zoomCamera(this,'button5','#model_kostel','125m 0m 19m','80deg 80deg 300m')">5</button>
+          <button id = "button6_" data-modal-target="#labska" class="slideRight" onclick="zoomCamera(this,'button6','#model_kostel','204m 0m -107m','80deg 80deg 300m')">6</button>
+          -->
+        </div>
+      </div>
+           <!-- Popups in main modelviewer -->
+    <div class="modal" id="vstup">
+      <div class="modal-header">
+        <div class="title">Vstup</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+    <div class="modal" id="kaple">
+      <div class="modal-header">
+        <div class="title">Kokovská kaple</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+    <div class="modal" id="chor">
+      <div class="modal-header">
+        <div class="title">Parléřův chór</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+    <div class="modal" id="vez">
+      <div class="modal-header">
+        <div class="title">Zvonice</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+
+       <div class="slider">
+        <div class="slides">
+          <button class="slide" onclick="switchSrc(this,'#model_kostel', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkostel_1400.glb?v=1631529505507')">
+            14.stol
+          </button>
+          <button class="slide" onclick="switchSrc(this,'#model_kostel', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkostel_1450.glb?v=1631686716492')">
+            pol 14.stol
+          </button>
+          <button class="slide selected" onclick="switchSrc(this,'#model_kostel', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_kostel.glb?v=1631686617973')">
+            Současnost
+          </button>
+         </div>
+      </div>
+    </model-viewer> 
+    
+    <section class="attribution">
+      <span>
+        <h1>Kolín - kostel sv. Bartoloměje </h1>
+        <a href="index.html">zpátky do města</a>
+      </span>
+    </section>
+  
+  <script type="module">
+    
+    const posters = ['https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta6.jpg?v=1631713304938',
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta7.jpg?v=1631713313438', 
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta.jpg?v=1631713457285',
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta1.jpg?v=1631713460874',
+                    'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta3.jpg?v=1631713464690'];
+    
+    let i = 0;
+    const modelViewer2 = document.querySelector('#model_kostel');
+    setInterval(() => modelViewer2.setAttribute('poster', `${posters[++i % 4]}`), 2500);
+
+</script>
+  
+  <!-- 💁 Include both scripts below to support all browsers! -->
+
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+  </script>
+</body>
+</html>

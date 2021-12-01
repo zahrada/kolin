@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="cz">
+  <head>
+    <title>Kolin zpatky v case</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="demo-styles.css">
+    <link rel="stylesheet" href="popups.css">
+    <link rel="stylesheet" href="right_button.css">
+    
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+    
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+   <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script> 
+
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+   <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script> 
+    
+    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+    <script defer src="zoomCamera.js"></script>
+
+  </head> 
+<body>
+  <div id="card">
+    <!-- All you need to put beautiful, interactive 3D content on your site: 
+https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS.glb?v=1631544899759
+
+-->
+    <model-viewer id="model_main"
+                  loading="eager"
+                  minimumRenderScale ="1"
+                  src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS.glb?v=1631544899759"
+                  ios-src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkourimska_brana.usdz?v=1628592919516"
+                  poster="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363"
+                  alt="A 3D model of an astronaut"
+                  shadow-intensity="1"
+                  ar ar-modes="webxr scene-viewer quick-look"
+                  camera-controls alt="A 3D model carousel"
+                  camera-controls camera-target="0m 0m 0m"
+                  camera-controls max-camera-orbit ="Infinity 100deg 600m"
+                  camera-controls min-camera-orbit ="-Infinity -20deg 20m"
+                  environment-image = "neutral">
+
+      <button id = "button1" data-modal-target="#zamek" slot="hotspot-hrad" class="slideRight" data-position="-100 0 -230"  onclick="zoomCamera(this,'button1_','#model_main','-100m 0m -230m','80deg 80deg 300m')">1</button>
+      <button id = "button2" data-modal-target="#basta" slot="hotspot-basta" class="slideRight" data-position="-195 0 -121"  onclick="zoomCamera(this,'button2_','#model_main','-195m 0m -121m','80deg 80deg 300m')">2</button>
+      <button id = "button3" data-modal-target="#synagoga" slot="hotspot-synagoga" class="slideRight" data-position="-170 0 -93"  onclick="zoomCamera(this,'button3_','#model_main','-170m 0m -93m','80deg 80deg 300m')">3</button>
+      <button id = "button4" data-modal-target="#kourimska" slot="hotspot-kourimska" class="slideRight" data-position="-48 0 57"  onclick="zoomCamera(this,'button4_','#model_main','-48m 0m 57m','80deg 80deg 300m')">4</button>
+      <button id = "button5" data-modal-target="#caslavska" slot="hotspot-caslavska" class="slideRight" data-position="125 0 19"  onclick="zoomCamera(this,'button5_','#model_main','125m 0m 19m','80deg 80deg 300m')">5</button>
+      <button id = "button6" data-modal-target="#labska" slot="hotspot-labska" class="slideRight" data-position="204 0 -107"  onclick="zoomCamera(this,'button6_','#model_main','204m 0m -107m','80deg 80deg 300m')">6</button>
+      <button id = "button7" data-modal-target="#radnice" slot="hotspot-radnice" class="slideRight" data-position="20 0 -170"  onclick="zoomCamera(this,'button7_','#model_main','20m 0m -170m','80deg 80deg 300m')">7</button>
+      <button id = "button8" data-modal-target="#kostel" slot="hotspot-kostel" class="slideRight" data-position="25 0 65" onclick="zoomCamera(this,'button8_','#model_main','25m 0m 65m','80deg 80deg 300m')">8</button>
+      <button id = "button9" data-modal-target="#prazska" slot="hotspot-prazska" class="slideRight" data-position="-151 0 -145" onclick="zoomCamera(this,'button9_','#model_main','-151m 0m -145m','80deg 80deg 300m')">9</button>
+      <button id = "button0" data-modal-target="#parkan" slot="hotspot-parkan" class="slideRight" data-position="70 0 120" onclick="zoomCamera(this,'button0_,'#model_main','70m 0m 120m','80deg 80deg 300m')">10</button>
+      
+      <div class="sliderRight">
+        <div class="slidesRight">
+          <button id = "button1_" data-modal-target="#zamek" class="slideRight" onclick="zoomCamera(this,'button1','#model_main','-100m 0m -230m','80deg 80deg 300m')">1</button>
+          <button id = "button2_" data-modal-target="#basta" class="slideRight" onclick="zoomCamera(this,'button2','#model_main','-195m 0m -121m','80deg 80deg 300m')">2</button>
+          <button id = "button3_" data-modal-target="#synagoga" class="slideRight" onclick="zoomCamera(this,'button3','#model_main','-170m 0m -93m','80deg 80deg 300m')">3</button>
+          <button id = "button4_" data-modal-target="#kourimska" class="slideRight" onclick="zoomCamera(this,'button4','#model_main','-48m 0m 57m','80deg 80deg 300m')">4</button>
+          <button id = "button5_" data-modal-target="#caslavska" class="slideRight" onclick="zoomCamera(this,'button5','#model_main','125m 0m 19m','80deg 80deg 300m')">5</button>
+          <button id = "button6_" data-modal-target="#labska" class="slideRight" onclick="zoomCamera(this,'button6','#model_main','204m 0m -107m','80deg 80deg 300m')">6</button>
+          <button id = "button7_" data-modal-target="#radnice" class="slideRight" onclick="zoomCamera(this,'button7','#model_main','20m 0m -170m','80deg 80deg 300m')">7</button>
+          <button id = "button8_" data-modal-target="#kostel" class="slideRight" onclick="zoomCamera(this,'button8','#model_main','25m 0m 65m','80deg 80deg 300m')">8</button>
+          <button id = "button9_" data-modal-target="#prazska" class="slideRight" onclick="zoomCamera(this,'button9','#model_main','-151m 0m -145m','80deg 80deg 200m')">9</button>
+          <button id = "button0_" data-modal-target="#parkan" class="slideRight" onclick="zoomCamera(this,'button0','#model_main','70m 0m 120m','80deg 80deg 200m')">10</button>
+         </div>
+      </div>
+           <!-- Popups in main modelviewer -->
+    <div class="overlay"></div>
+    <div class="modal" id="zamek">
+      <div class="modal-header">
+        <div class="title">Zámek a pivovar</div>
+        <a href="zamek.html">Více</a>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      zámek a pivovar
+      </div>
+    </div>
+    <div class="modal" id="basta">
+      <div class="modal-header">
+        <div class="title">Parkánová bašta</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      Parkánová bašta
+        <a href="pano.html">Více</a>
+      </div>
+    </div>
+    <div class="modal" id="synagoga">
+      <div class="modal-header">
+        <div class="title">Synagoga</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      Synagoga
+      </div>
+    </div>
+  <div class="modal" id="kourimska">
+      <div class="modal-header">
+        <div class="title">Kouřimská brána</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      Kouřimská brána
+        <a href="kourimska.html">Více</a>
+      </div>
+    </div>
+  <div class="modal" id="caslavska">
+      <div class="modal-header">
+        <div class="title">Čáslavská brána</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      Směrem na východ vedla z města Čáslavská (portam Czasslaviensem) později zvaná Horská brána, která uzavírala Kutnohorskou ulici v prostoru mezi dnešními domy čp. 41 a 54. Po požáru města v roce 1734 byla tato brána barokně přestavěna kolínským stavitelem Josefem Jedličkou.
+      </div>
+    </div>
+  <div class="modal" id="labska">
+      <div class="modal-header">
+        <div class="title">Labská brána</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      Labská brána
+      </div>
+    </div>
+    <div class="modal" id="prazska">
+      <div class="modal-header">
+        <div class="title">nová Pražská brána</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      nová Pražská brána
+      </div>
+    </div>
+    <div class="modal" id="kostel">
+      <div class="modal-header">
+        <div class="title">kostel sv. Bartoloměje</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      kostel sv. Bartoloměje
+        <a href="kostel.html">Více</a>
+        <a href="kostel_babylon.html">Kostel - babylon_viewer.js</a>
+        <a href="kostel_babylon1.html">Kostel - babylon.js</a>
+      </div>
+    </div>
+    <div class="modal" id="radnice">
+      <div class="modal-header">
+        <div class="title">Radnice</div>
+        <a href="http://www.fotohistorie.cz/Stredocesky/Kolin/Kolin/Kolin_-_namesti/Default.aspx">Zdroj</a>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta4.jpg?v=1631711375941">
+      </div>
+    </div>
+    <div class="modal" id="parkan">
+      <div class="modal-header">
+        <div class="title">Parkán</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+      parkan
+        <a href="parkan.html">Více</a>
+      </div>
+    </div>
+      
+      <div class="slider">
+        <div class="slides">
+          <button class="slide" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_cisarsky_otisk.glb?v=1630926151065')">
+            Historie
+          </button>
+          <button class="slide selected" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS.glb?v=1631544899759')">
+            Současnost
+          </button>
+         </div>
+      </div>
+      
+    </model-viewer>
+    
+    <section class="attribution">
+      <span>
+        <h1>Kolín - Císařský otisk</h1>
+        <a href="index_NavBar.html">Parkán</a>
+        <a href="kourimska.html">Kouřimská brána</a>
+        <a href="zamek.html">Zámek a pivovar</a>
+        <a href="kostel.html">Kostel</a>
+        <a href="kostnice.html">Kostnice</a>
+        <a href="kostel_babylon.html">Kostel1</a>
+        <a href="kostel_babylon1.html">Kostel2</a>
+        <a href="pano.html">Virtuální prohlídka</a>
+        <a href="kolinGeoAr.html">GeoAR</a>
+      </span>
+      <a href="zdroje.html">Zdroje</a>
+    </section>
+  </div>
+  
+  <script type="module">
+    
+    const posters = ['https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta6.jpg?v=1631713304938',
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta7.jpg?v=1631713313438', 
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta.jpg?v=1631713457285',
+                   'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta1.jpg?v=1631713460874',
+                    'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta3.jpg?v=1631713464690'];
+    
+    let i = 0;
+    const modelViewer1 = document.querySelector('#model_main');
+    setInterval(() => modelViewer1.setAttribute('poster', `${posters[++i % 5]}`), 2000);
+    
+  </script>
+  
+  <!-- 💁 Include both scripts below to support all browsers! -->
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+  </script>
+</body>
+</html>

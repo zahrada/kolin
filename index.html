@@ -44,6 +44,7 @@
 
   </head> 
   <body> 
+  
     <div class="wrapper hover_collapse">
     <div class="sidebar">
 	    <div class="sidebar_inner">
@@ -52,188 +53,186 @@
             <a href="#">
               <div class="modal-header">
                 <div class="title">kolín</div>
-                <span class="text" onclick="back(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')" =>ZAVŘÍT</span>
+                <span class="text" onclick="back(this,'./assets/kolin_GIS.gltf')">ZAVŘÍT</span>
               </div>
             </a>
             <a href="#"></a>
           </li>
           <li>
 	  		    <a href="#">
-              <span class="icon1 selected" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hist_mesto.glb?v=1638356126362')">Minulost</span>
-              <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">21.stol</span>
+              <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_1500.gltf')">Minulost</span>
+              <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
 		  	  	</a>
             <a href="#"></a>
 		  	   </li>
 	    	  <li>
 	    		  <a href="#">
-              <span class="icon" id = "button1" onclick="zoomCamera(this,'button1','#model_main','-100m 0m -230m','-20deg 60deg 80m')"></span>
+              <span class="icon" id = "button1" onclick="zoomCamera(this,'button1','text','-134m 0m -248m','60deg 20deg 100m')"></span>
 		    		  <span class="text" 
                     data-modal-target="#zamek" 
-                    onclick="switchModel(this, '#model_main','-104m 0m -248m','80deg 80deg 40m','https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button1','text','-134m 0m -248m','60deg 20deg 100m')">
                 Zámek a pivovar
               </span>
 		    	  </a>
 		      </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button9" onclick="zoomCamera(this,'button9','#model_main','40m 30m 75m','0deg 60deg 100m')"></span>
+              <span class="icon" id = "button9" onclick="zoomCamera(this,'button9','text','40m 30m 75m','0deg 60deg 100m')"></span>
               <span class="text" 
                     data-modal-target="#kostel"
-                    onclick="switchModel(this, '#model_main', '40m 30m 75m','0deg 60deg 100m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button9','text','40m 30m 75m','0deg 60deg 100m')">
                 kostel sv. Bartoloměje
               </span>
 		  	  	</a>
 		  	   </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button10" onclick="zoomCamera(this,'button10','#model_main','70m 0m 120m','150deg 10deg 80m')"></span>
+              <span class="icon" id = "button10" onclick="zoomCamera(this,'button10','text','56m 0m 108m','10deg 0deg 100m')"></span>
               <span class="text" 
                     data-modal-target="#parkan"
-                    onclick="switchModel(this, '#model_main', '70m 0m 120m','150deg 10deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button10','text','56m 0m 108m','10deg 0deg 100m')">
                 Parkán
               </span>
 		  	  	</a>
 		  	   </li>
           <li>
 	  		    <a href="#">
-              <span class="icon" id = "button11" onclick="zoomCamera(this,'button11','#model_main','17m 30m 44m','80deg 80deg 80m')"></span>
+              <span class="icon" id = "button11" onclick="zoomCamera(this,'button11','text','9m 30m 39m' ,'150deg 10deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#zvonice"
-                    onclick="switchModel(this, '#model_main', '17m 30m 44m' ,'150deg 10deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button11','text','9m 30m 39m' ,'150deg 10deg 80m')">
                 Zvonice
               </span>
 		  	  	</a>
 		  	   </li>
-          <!---
+           <li>
+	  		    <a href="#">
+              <span class="icon" id = "button2" onclick="zoomCamera(this,'button2','text','-195m 0m -121m','270deg 60deg 80m')"></span>
+              <span class="text" 
+                    data-modal-target="#basta"
+                    onclick="zoomCamera(this,'button2','text','-195m 0m -121m','270deg 60deg 80m')">
+                Bašta
+              </span>
+		  	  	</a>
+		  	   </li>
+          <!--
            <li>
           	<a href="#">
               <span class="icon" id = "button14" onclick="zoomCamera(this,'button14','#model_main','57m 0m 109m','80deg 60deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#kostnice"
-                    onclick="switchModel(this, '#model_main', '57m 0m 109m','80deg 60deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="switchModel(this, '#model_main', '57m 0m 109m','80deg 60deg 80m', './assets/kolin_GIS.gltf')">
                 Kostnice
               </span>
 		  	  	</a>
 		  	   </li>
+           -->
           <li>
 	  		    <a href="#">
-              <span class="icon" id = "button3" onclick="zoomCamera(this,'button3','#model_main','-170m 0m -93m','80deg 50deg 80m')"></span>
+              <span class="icon" id = "button3" onclick="zoomCamera(this,'button3','text','-170m 0m -93m','80deg 50deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#synagoga"
-                    onclick="switchModel(this, '#model_main', '-170m 0m -93m','80deg 50deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button3','text','-170m 0m -93m','80deg 50deg 80m')">
                 Synagoga
               </span>
 		  	  	</a>
 		      </li>
           <li>
 	  		    <a href="#">
-              <span class="icon" id = "button8" onclick="zoomCamera(this,'button8','#model_main','20m 0m -170m','0deg 50deg 80m')"></span>
+              <span class="icon" id = "button8" onclick="zoomCamera(this,'button8','text','20m 0m -170m','0deg 50deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#radnice"
-                    onclick="switchModel(this, '#model_main', '20m 0m -170m','0deg 50deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button8','text','20m 0m -170m','0deg 50deg 80m')">
                 Radnice
               </span>
 		  	  	</a>
 		  	   </li>
-          -->
           <li>
 	  		    <a href="#">
-              <span class="icon" id = "button2" onclick="zoomCamera(this,'button2','#model_main','-195m 0m -121m','270deg 60deg 80m')"></span>
-              <span class="text" 
-                    data-modal-target="#basta"
-                    onclick="switchModel(this, '#model_main', '-195m 0m -121m','270deg 60deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
-                Bašta
-              </span>
-		  	  	</a>
-		  	   </li>
-          <li>
-	  		    <a href="#">
-              <span class="icon" id = "button4" onclick="zoomCamera(this,'button4','#model_main','-48m 0m 57m','0deg 50deg 80m')"></span>
+              <span class="icon" id = "button4" onclick="zoomCamera(this,'button4','text','-48m 0m 57m','0deg 50deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#kourimska"
-                    onclick="switchModel(this, '#model_main', '-48m 0m 57m','0deg 50deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button4','text','-48m 0m 57m','0deg 50deg 80m')">
                 Kouřimská brána
               </span>
 		  	  	</a>
 		  	   </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button5" onclick="zoomCamera(this,'button5','#model_main','125m 0m 19m','80deg 50deg 80m')"></span>
+              <span class="icon" id = "button5" onclick="zoomCamera(this,'button5','text','125m 0m 19m','80deg 50deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#caslavska"
-                    onclick="switchModel(this, '#model_main', '125m 0m 19m','80deg 50deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button5','text','125m 0m 19m','80deg 50deg 80m')">
                 Čáslavská brána
               </span>
 		  	  	</a>
 		  	   </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button6" onclick="zoomCamera(this,'button6','#model_main','204m 0m -107m','80deg 50deg 80m')"></span>
+              <span class="icon" id = "button6" onclick="zoomCamera(this,'button6','text','204m 0m -107m','80deg 50deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#labska"
-                    onclick="switchModel(this, '#model_main', '204m 0m -107m','80deg 50deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button6','text','204m 0m -107m','80deg 50deg 80m')">
                 Labská brána
               </span>
 		  	  	</a>
 		  	   </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button7" onclick="zoomCamera(this,'button7','#model_main','-151m 0m -145m','80deg 50deg 80m')"></span>
+              <span class="icon" id = "button7" onclick="zoomCamera(this,'button7','text','-151m 0m -145m','80deg 50deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#prazska"
-                    onclick="switchModel(this, '#model_main', '-151m 0m -145m','80deg 50deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button7','text','-151m 0m -145m','80deg 50deg 80m')">
                 Pražská brána
               </span>
 		  	  	</a>
 		  	   </li>
-          <!--
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button12" onclick="zoomCamera(this,'button12','#model_main','34m 0m -103m','-40deg 0deg 80m')"></span>
+              <span class="icon" id = "button12" onclick="zoomCamera(this,'button12','text','34m 0m -103m','-40deg 0deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#namesti"
-                    onclick="switchModel(this, '#model_main', '34m 0m -103m','-40deg 0deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button12','text','34m 0m -103m','-40deg 0deg 80m')">
                 Karlovo náměstí
               </span>
 		  	  	</a>
 		  	   </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button13" onclick="zoomCamera(this,'button13','#model_main','-18m 0m -73m','80deg 80deg 80m')"></span>
+              <span class="icon" id = "button13" onclick="zoomCamera(this,'button13','text','-18m 0m -73m','130deg 80deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#veiger"
-                    onclick="switchModel(this, '#model_main', '-18m 0m -73m','80deg 80deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button13','text','-18m 0m -73m','130deg 80deg 80m')">
                 Veigertovský dům
               </span>
 		  	  	</a>
 		  	   </li>
-
            <li>
           	<a href="#">
-              <span class="icon" id = "button16" onclick="zoomCamera(this,'button16','#model_main','57m 0m 109m','80deg 60deg 80m')"></span>
+              <span class="icon" id = "button16" onclick="zoomCamera(this,'button16','text', '-145m 0m 31m','340deg 40deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#evangelicky"
-                    onclick="switchModel(this, '#model_main', '57m 0m 109m','80deg 60deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button16','text', '-145m 0m 31m','340deg 40deg 80m')">
                 Evangelický kostel
               </span>
 		  	  	</a>
 		  	   </li>
            <li>
           	<a href="#">
-              <span class="icon" id = "button17" onclick="zoomCamera(this,'button17','#model_main','57m 0m 109m','80deg 60deg 80m')"></span>
+              <span class="icon" id = "button17" onclick="zoomCamera(this,'button17','#text','34m 0m 35m','80deg 30deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#cervinkovsky"
-                    onclick="switchModel(this, '#model_main', '57m 0m 109m','80deg 60deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button17','#text','34m 0m 35m','80deg 30deg 80m')">
                 Červinkovský dům
               </span>
 		  	  	</a>
 		  	   </li>
           <li>
           	<a href="#">
-              <span class="icon" id = "button15" onclick="zoomCamera(this,'button15','#model_main','57m 0m 109m','80deg 60deg 80m')"></span>
+              <span class="icon" id = "button15" onclick="zoomCamera(this,'button15','text','81m 0m -368m','80deg 60deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#prachovna"
-                    onclick="switchModel(this, '#model_main', '57m 0m 109m','80deg 60deg 80m', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">
+                    onclick="zoomCamera(this,'button15','text','81m 0m -368m','80deg 60deg 80m')">
                 Práchovna
               </span>
 		  	  	</a>
@@ -249,46 +248,46 @@
           <a href="#">
             <div class="modal-header">
               <div class="title">Zámek a pivovar</div>
-              <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">do města</span>
+              <span class="title" onclick="backToTown(this)">do města</span>
             </div>
           </a>
           <a href="#"></a>
         </li>
         <li>
           <a href="#">
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad.glb?v=1638364056248')">Minulost</span>
-            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hrad.glb?v=1630910215538')">21.stol</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_hrad.glb')">Minulost</span>
+            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
           </a>
           <a href="#"></a>
         </li>
         <li>
           <a href="#">
-            <span class="icon " id = "zamek1" onclick="zoomCamera(this,'zamek1','zame1','-104m 0m -248m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'zamek1','zame1','-104m 0m -248m','80deg 80deg 40m')">Zámek</span>
+            <span class="icon " id = "zamek1" onclick="zoomCamera(this,'zamek1','zame1','-104m 0m -248m','80deg 20deg 40m')"></span>
+            <span class="text" onclick="zoomCamera(this,'zamek1','zame1','-104m 0m -248m','80deg 20deg 40m')">Zámek</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <span class="icon" id = "zamek2" onclick="zoomCamera(this,'zamek2','zame2','-111m 0m -233m','80deg 80deg 300m')"></span>
-            <span class="text" onclick="zoomCamera(this,'zamek2','zame2','-111m 0m -233m','80deg 80deg 300m')">Pivovar</span>
+            <span class="icon" id = "zamek2" onclick="zoomCamera(this,'zamek2','zame2','-146m 2m -282m','3307deg 40deg 60m')"></span>
+            <span class="text" onclick="zoomCamera(this,'zamek2','zame2','-146m 2m -282m','3307deg 40deg 60m')">Pivovar</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <span class="icon" id = "zamek3" onclick="zoomCamera(this,'zamek3','zame3','-190m 0m -265m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'zamek3','zame3','-190m 0m -265m','80deg 80deg 40m')">Vstup</span>
+            <span class="icon" id = "zamek3" onclick="zoomCamera(this,'zamek3','zame3','-190m 0m -265m','270deg 10gdeg 40m')"></span>
+            <span class="text" onclick="zoomCamera(this,'zamek3','zame3','-190m 0m -265m','270deg 10gdeg 40m')">Vstup</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <span class="icon" id = "zamek4" onclick="zoomCamera(this,'zamek4','zame4','-85m 0m -256m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'zamek4','zame4','-85m 0m -256m','80deg 80deg 40m')">Věž</span>
+            <span class="icon" id = "zamek4" onclick="zoomCamera(this,'zamek4','zame4','-85m 0m -256m','30deg 20deg 40m')"></span>
+            <span class="text" onclick="zoomCamera(this,'zamek4','zame4','-85m 0m -256m','30deg 20deg 40m')">Věž</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <span class="icon" id = "zamek5" onclick="zoomCamera(this,'zamek5','zame5','-124m 0m -201m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'zamek5','zame5','-124m 0m -201m','80deg 80deg 40m')">Věž1</span>
+            <span class="icon" id = "zamek5" onclick="zoomCamera(this,'zamek5','zame5','-124m 0m -201m','80deg 20deg 40m')"></span>
+            <span class="text" onclick="zoomCamera(this,'zamek5','zame5','-124m 0m -201m','80deg 20deg 40m')">Věž1</span>
           </a>
         </li>
         <li>
@@ -323,48 +322,40 @@
           <a href="#">
             <div class="modal-header">
               <div class="title">kostel sv. Bartoloměje</div>
-              <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">do města</span>
+              <span class="title" onclick="backToTown(this)">do města</span>
             </div>
           </a>
           <a href="#"></a>
         </li>
         <li>
           <a href="#">
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_hist_mesto.glb?v=1638356126362')">1300</span>
-            <!--
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkostel_1450.glb?v=1631686716492')">1350</span>
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkostel_1450.glb?v=1631686716492')">1400</span>
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkostel_1450.glb?v=1631686716492')">1500</span>
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkostel_1450.glb?v=1631686716492')">1796</span>
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkostel_1450.glb?v=1631686716492')">1800</span>
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkostel_1450.glb?v=1631686716492')">1847</span>
--->
-            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_kostel.glb?v=1635852298776')">21.stol</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_1500.gltf')">1300</span>
+            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
           </a>
           <a href="#"></a>
         </li>
         <li>
           <a href="#">
-            <span class="icon" id = "kostel1" onclick="zoomCamera(this,'kostel1','koste1','9m 2m 58m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'kostel1','koste1','9m 2m 58m','80deg 80deg 40m')">Kostel</span>
+            <span class="icon" id = "kostel1" onclick="zoomCamera(this,'kostel1','koste1','40m 30m 75m','0deg 60deg 100m')"></span>
+            <span class="text" onclick="zoomCamera(this,'kostel1','koste1','40m 30m 75m','0deg 60deg 100m')">Kostel</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <span class="icon" id = "kostel2" onclick="zoomCamera(this,'kostel2','koste2','9m 2m 58m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'kostel2','koste2','9m 2m 58m','80deg 80deg 40m')">Vstup</span>
+            <span class="icon" id = "kostel2" onclick="zoomCamera(this,'kostel2','koste2','9m 2m 58m','250deg 20deg 50m')"></span>
+            <span class="text" onclick="zoomCamera(this,'kostel2','koste2','9m 2m 58m','250deg 20deg 50m')">Vstup</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <span class="icon" id = "kostel3" onclick="zoomCamera(this,'kostel3','koste3','9m 27m 40m','80deg 80deg 300m')"></span>
-            <span class="text" onclick="zoomCamera(this,'kostel3','koste3','9m 27m 40m','80deg 80deg 300m')">Kokovská kaple</span>
+            <span class="icon" id = "kostel3" onclick="zoomCamera(this,'kostel3','koste3','17m 4m 76m','330deg 30deg 40m')"></span>
+            <span class="text" onclick="zoomCamera(this,'kostel3','koste3','17m 4m 76m','330deg 30deg 40m')">Kokovská kaple</span>
           </a>
         </li>
         <li>
           <a href="#">
             <span class="icon" id = "kostel4" onclick="zoomCamera(this,'kostel4','koste3','17m 2m 76m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'kostel4','koste4','17m 2m 76m','80deg 80deg 40m')">Parléřův chór</span>
+            <span class="text" onclick="zoomCamera(this,'kostel4','koste4','49m 23m 76m','80deg 50deg 40m')">Parléřův chór</span>
           </a>
         </li>
       </ul>
@@ -391,15 +382,15 @@
           <a href="#">
             <div class="modal-header">
               <div class="title">Zvonice</div>
-              <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+              <span class="title" onclick="backToTown(this)">Zavřít</span>
             </div>
           </a>
           <a href="#"></a>
         </li>
         <li>
           <a href="#">
-            <span class="icon1" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_kostel_vez_hist.glb?v=1638022374710')">Baroko</span>
-            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', 'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_kostel_vez.glb?v=1635852329465')">21.stol</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_kostel_vez_hist.glb')">Baroko</span>
+            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
           </a>
           <a href="#"></a>
         </li>
@@ -408,14 +399,14 @@
       U kostela sv. Bartoloměje stojí pozdně gotická zvonice z roku 1504. Tato třípatrová hranolová stavba měří 55 m. Dnes je to Národní kulturní památka.
       </div>
     </div>
-  
+  <!--
     <div class="modal" id="basta">
        <ul>
         <li>
           <a href="#">
             <div class="modal-header">
               <div class="title">Parkánová bašta</div>
-              <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+              <span class="title" onclick="backToTown(this)">Zavřít</span>
             </div>
           </a>
           <a href="#"></a>
@@ -428,7 +419,7 @@
     <div class="modal" id="synagoga">
       <div class="modal-header">
         <div class="title">Synagoga</div>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+        <span class="title" onclick="backToTown(this)">Zavřít</span>
       </div>
       <div class="modal-body">
         
@@ -437,17 +428,16 @@
    <div class="modal" id="kourimska">
       <div class="modal-header">
         <div class="title">Kouřimská brána</div>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+        <span class="title" onclick="backToTown(this)">Zavřít</span>
       </div>
       <div class="modal-body">
       Kouřimská brána
-        <a href="kourimska.html">Více</a>
       </div>
     </div>
   <div class="modal" id="caslavska">
       <div class="modal-header">
         <div class="title">Čáslavská brána</div>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+        <span class="title" onclick="backToTown(this)">Zavřít</span>
       </div>
       <div class="modal-body">
       Směrem na východ vedla z města Čáslavská (portam Czasslaviensem) později zvaná Horská brána, která uzavírala Kutnohorskou ulici v prostoru mezi dnešními domy čp. 41 a 54. Po požáru města v roce 1734 byla tato brána barokně přestavěna kolínským stavitelem Josefem Jedličkou.
@@ -456,7 +446,7 @@
   <div class="modal" id="labska">
       <div class="modal-header">
         <div class="title">Labská brána</div>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+        <span class="title" onclick="backToTown(this)">Zavřít</span>
       </div>
       <div class="modal-body">
       Labská brána
@@ -465,69 +455,63 @@
     <div class="modal" id="prazska">
       <div class="modal-header">
         <div class="title">nová Pražská brána</div>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+        <span class="title" onclick="backToTown(this)">Zavřít</span>
       </div>
       <div class="modal-body">
       nová Pražská brána
       </div>
     </div>
-
     <div class="modal" id="radnice">
       <div class="modal-header">
         <div class="title">Radnice</div>
-        <a href="http://www.fotohistorie.cz/Stredocesky/Kolin/Kolin/Kolin_-_namesti/Default.aspx">Zdroj</a>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+        <span class="title" onclick="backToTown(this)">Zavřít</span>
       </div>
       <div class="modal-body">
-        <img src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta4.jpg?v=1631711375941">
       </div>
     </div>
-
+  -->
     <div class="modal" id="parkan">
  <ul>
         <li>
           <a href="#">
             <div class="modal-header">
               <div class="title">Parkán</div>
-              <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">Zavřít</span>
+              <span class="title" onclick="backToTown(this)">Zavřít</span>
             </div>
           </a>
-          <a href="#"></a>
+          <a href="#">
+            <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_1500.gltf')">Minulost</span>
+            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
+          </a>
         </li>
         <li>
           <a href="#">
             <span class="icon" id = "parkan1" onclick="zoomCamera(this,'parkan1','parka1','50m 5m 100m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'parkan1','parka1','50m 5m 100m','80deg 80deg 40m')">Kostnice</span>
+            <span class="text" onclick="zoomCamera(this,'parkan1','parka1','50m 5m 100m','80deg 40deg 40m')">Kostnice</span>
           </a>
         </li>
         <li>
           <a href="#">
             <span class="icon" id = "parkan2" onclick="zoomCamera(this,'parkan2','parka2','75m 5m 75m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'parkan2','parka2','75m 5m 75m','80deg 80deg 40m')">Muzeum</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon" id = "parkan3" onclick="zoomCamera(this,'parkan3','parka3','85m -2m 74m','80deg 80deg 300m')"></span>
-            <span class="text" onclick="zoomCamera(this,'parkan3','parka3','85m -2m 74m','80deg 80deg 300m')">WC</span>
+            <span class="text" onclick="zoomCamera(this,'parkan2','parka2','75m 5m 75m','80deg 40deg 40m')">Muzeum</span>
           </a>
         </li>
         <li>
           <a href="#">
             <span class="icon" id = "parkan4" onclick="zoomCamera(this,'parkan4','parka4','110m -2m 45m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'parkan4','parka4','110m -2m 45m','80deg 80deg 40m')">Hradební věž</span>
+            <span class="text" onclick="zoomCamera(this,'parkan4','parka4','110m -2m 45m','80deg 40deg 40m')">Hradební věž</span>
           </a>
         </li>
         <li>
           <a href="#">
             <span class="icon" id = "parkan5" onclick="zoomCamera(this,'parkan5','parka5','42m -0.5m 101m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'parkan5','parka5','42m -0.5m 101m','80deg 80deg 40m')">Hradební branka</span>
+            <span class="text" onclick="zoomCamera(this,'parkan5','parka5','42m -0.5m 101m','200deg 20deg 40m')">Hradební branka</span>
           </a>
         </li>
         <li>
           <a href="#">
             <span class="icon" id = "parkan6" onclick="zoomCamera(this,'parkan6','parka6','-15m 5m 76m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'parkan6','parka6','-15m 5m 76m','80deg 80deg 40m')">Stará farní škola</span>
+            <span class="text" onclick="zoomCamera(this,'parkan6','parka6','-15m 5m 76m','0deg 40deg 70m')">Stará farní škola</span>
           </a>
         </li>
       </ul>
@@ -553,11 +537,11 @@
       </div>
       <p data-close-button class="close-button"></i></p>
     </div>
-<
+    <!--
     <div class="modal" id="namesti">
       <div class="modal-header">
         <div class="title">Karlovo náměstí</div>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">do města</span>
+        <span class="title" onclick="backToTown(this)">do města</span>
       </div>
       <div class="modal-body">
       Karlovo náměstí
@@ -566,7 +550,7 @@
     <div class="modal" id="veiger">
       <div class="modal-header">
         <div class="title">Veigertovský dům</div>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">do města</span>
+        <span class="title" onclick="backToTown(this)">do města</span>
       </div>
       <div class="modal-body">
       Regionální muzeum v Kolíně – Veigertovský dům
@@ -575,7 +559,7 @@
     <div class="modal" id="kostnice">
       <div class="modal-header">
         <div class="title">Kostnice</div>
-        <span class="title" onclick="backToTown(this,'https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_GIS1.glb?v=1638359247388')">do města</span>
+        <span class="title" onclick="backToTown(this)">do města</span>
       </div>
       <iframe title="Kolín kostnice exteriér/Kolín ossuary exterior" 
               frameborder="0" allowfullscreen mozallowfullscreen="true" 
@@ -596,30 +580,28 @@
         height="50%"
         src="https://sketchfab.com/models/f22402aaedd841998f20520aaca46865/embed"> 
       </iframe>
-    </div>
-
-      <!---->
-      
-      
-    <div class="main_container">
-          <model-viewer id="model_main"
-                  ondblclick="changePivotpoint(event)"
+    </div>   
+  -->
+  <!--
+                      alt="Kolin"
+                  shadow-intensity="1"
                   minimumRenderScale ="0.25"
                   modelCacheSize ="3"
                   powerPreference = "low-power"
-                  src="https://cdn.glitch.me/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkolin_1500.gltf?v=1638367079942"
+                  environment-image = "neutral"
+                  camera-controls alt="A 3D model carousel"
+  -->
+    <div class="main_container">
+          <model-viewer id="model_main"
+                  ondblclick="changePivotpoint(event)"
+                  src="./assets/kolin_GIS.gltf"
                   ios-src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkourimska_brana.usdz?v=1628592919516"
                   poster="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363"
-                  alt="Kolin"
-                  shadow-intensity="1"
                   ar ar-modes="scene-viewer quick-look webxr"
-                  camera-controls alt="A 3D model carousel"
                   camera-controls camera-target="0m 0m 0m"
                   camera-controls max-camera-orbit ="Infinity 100deg 600m"
-                  camera-controls min-camera-orbit ="-Infinity -20deg 20m"
-                  environment-image = "neutral">            
+                  camera-controls min-camera-orbit ="-Infinity -20deg 20m">            
             </model-viewer>
-      </div
       </div>
 </body>
 </html>

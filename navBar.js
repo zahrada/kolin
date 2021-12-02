@@ -70,7 +70,7 @@ closeModalButtons.forEach(button => {
   })
 })
 
-window.backToTown = (element, model) => {
+window.backToTown = (element) => {
   
   const modal = document.querySelector('.modal.active');
   closeModal(modal);
@@ -83,7 +83,6 @@ window.backToTown = (element, model) => {
   const modelViewer = document.querySelector('#model_main');
   const cameraOrbit = modelViewer.getCameraOrbit();
   const cameraTarget = modelViewer.getCameraTarget();
-  modelViewer.src = model;
   modelViewer.cameraTarget = `${cameraTarget.x}m ${cameraTarget.y}m ${cameraTarget.z}m`;
   modelViewer.cameraOrbit = `${cameraOrbit.theta}rad ${cameraOrbit.phi}rad ${cameraOrbit.radius}m`;
 };

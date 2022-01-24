@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolín - virtuální prohlídka</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+    <!-- Detect mobile phone or laptop -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.19/ua-parser.min.js"></script>
+
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        position: fixed;
+        cursor: default;
+        width: 100%;
+        height: 100%;
+      }
+      #panorama {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+</head>
+<body>
+
+<div id="panorama"></div>
+<script>
+    var ua = new UAParser();
+    var result = ua.getResult();
+
+    if(result.device.type== 'mobile'){
+        //mobile
+      var devicehfov = 10;
+    }
+    else{
+        //notebook
+        var devicehfov = 120;
+    }
+</script>
+<script>
+pannellum.viewer('panorama', {
+      "default": {
+        "firstScene": "nebe",
+        "autoLoad": true
+    },
+    
+    "scenes": {
+        "nebe": {
+            "title": "Z ptačí perstektivy",
+                "type": "equirectangular",
+                "pitch": -90,
+                "yaw": 80,
+                "hfov": devicehfov,
+                "autoLoad": true,
+                "orientationOnByDefault": true,
+                "showZoomCtrl": false,
+                "panorama": "./assets/kolin_mesto_4k_1.jpg",
+                "showFullscreenCtrl": true,
+            "hotSpots": [
+              /*
+                {
+                    "pitch": 60,
+                    "yaw": 60,
+                    "type": "info",
+                    "text": "The skylight is supported by an iron truss and has a second, peaked skylight over it."
+                },
+                {
+                    "pitch": 10,
+                    "yaw": 25,
+                    "type": "info",
+                    "text": "Much of the library was constructed from cast-iron to reduce the risk of fire."
+                },
+                {
+                    "pitch": 0,
+                    "yaw": 8,
+                    "type": "info",
+                    "text": "The lighting was originally gas."
+                },*/
+                {
+                    "pitch": -54,
+                    "yaw": 10,
+                    "type": "info",
+                    "text": "Dominikánský klášter - poloha kláštera mohla být i mimo hradby. Klikněte a vstupte do hradu Kolín po vypálení města husity",
+                    "URL": "pano.html"
+                },
+                {
+                    "pitch": -54,
+                    "yaw": 230,
+                    "type": "info",
+                    "text": "kostel sv. Bartoloměje - v počátcích kostela zde zvonice ještě nestála",
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 60,
+                    "type": "info",
+                    "text": "věž Práchovna",
+                },
+                {
+                    "pitch": -46,
+                    "yaw": 325,
+                    "type": "info",
+                    "text": "parkánová bašta - poslední  bašta, kterou lze vidět v terénu",
+                },
+                {
+                    "pitch": -80,
+                    "yaw": 10,
+                    "type": "scene",
+                    "text": "Náměstí",
+                    "sceneId": "namesti"
+                },
+                {
+                    "pitch": -46,
+                    "yaw": 2,
+                    "type": "scene",
+                    "text": "Původní pražská brána",
+                    "sceneId": "prazska"
+                },
+                {
+                    "pitch": -50,
+                    "yaw": 185,
+                    "type": "scene",
+                    "text": "Čáslavská brána",
+                    "sceneId": "caslavska"
+                },
+                {
+                    "pitch": -50,
+                    "yaw": 129,
+                    "type": "scene",
+                    "text": "Labská brána",
+                    "sceneId": "labska"
+                },
+                {
+                    "pitch": -48,
+                    "yaw": 257,
+                    "type": "scene",
+                    "text": "Kouřimská brána",
+                    "sceneId": "kourimska"
+                }
+            ]
+        },
+
+        "namesti": {
+            "title": "Náměstí",
+            "type": "equirectangular",
+            "pitch": 20,
+            "yaw": 110,
+            "hfov": devicehfov,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "./assets/kolin_mesto_4k_2.jpg",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+                {
+                    "pitch": 50,
+                    "yaw": 110,
+                    "type": "scene",
+                    "text": "Z ptačí perstektivy",
+                    "sceneId": "nebe"
+                }
+            ]
+        },
+      
+        "prazska": {
+            "title": "Původni pražská brána",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 0,
+            "hfov": devicehfov,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "./assets/kolin_mesto_4k_3.jpg",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+            {
+                    "pitch": 40,
+                    "yaw": 350,
+                    "type": "scene",
+                    "text": "Z ptačí perstektivy",
+                    "sceneId": "nebe"
+                }
+            ]
+        },
+        
+        "kourimska": {
+            "title": "Kouřimská brána",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 350,
+            "hfov": devicehfov,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "./assets/kolin_mesto_4k_4.jpg",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+            {
+                    "pitch": 40,
+                    "yaw": 350,
+                    "type": "scene",
+                    "text": "Z ptačí perstektivy",
+                    "sceneId": "nebe"
+                }
+            ]
+        },
+        "caslavska": {
+            "title": "Čáslavská brána",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 350,
+            "hfov": devicehfov,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "./assets/kolin_mesto_4k_5.jpg",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+            {
+                    "pitch": 40,
+                    "yaw": 350,
+                    "type": "scene",
+                    "text": "Z ptačí perstektivy",
+                    "sceneId": "nebe"
+                }
+            ]
+        },
+        "labska": {
+            "title": "Labská brána",
+            "type": "equirectangular",
+            "pitch": 0,
+            "yaw": 350,
+            "hfov": devicehfov,
+            "autoLoad": true,
+            "orientationOnByDefault": true,
+            "showZoomCtrl": false,
+            "panorama": "./assets/kolin_mesto_4k_6.jpg",
+            "showFullscreenCtrl": true,
+            "hotSpots": [
+            {
+                    "pitch": 40,
+                    "yaw": 350,
+                    "type": "scene",
+                    "text": "Z ptačí perstektivy",
+                    "sceneId": "nebe"
+                }
+            ]
+        },
+    }
+});
+  
+</script>
+
+</body>
+</html>

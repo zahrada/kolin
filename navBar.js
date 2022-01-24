@@ -2,7 +2,6 @@ var li_items = document.querySelectorAll(".sidebar ul li");
 var modelViewer = document.querySelector(".main_container");
 var wrapper = document.querySelector(".wrapper");
 
-
 li_items.forEach((li_item)=>{
 	li_item.addEventListener("mouseenter", ()=>{
 		if(wrapper.classList.contains("click_collapse")){
@@ -123,24 +122,60 @@ window.zoomCamera = (element, element1, text, target, zoom) => {
 };
 
 window.switchSrc = (element, modelviewer, name) => {
+  if(name == 'kolin_1500'){
+    name = kolin_1500_path;
+  }
+  if(name == 'kolin_GIS'){
+    name = kolin_gis_path;
+  }
+  if(name == 'kolin_hrad'){
+    name = kolin_hrad_path;
+  }
+  if(name == 'zvonice_baroko'){
+    name = kolin_zvonice_path;
+  }
   const modelViewer = document.querySelector(modelviewer);
   const cameraOrbit = modelViewer.getCameraOrbit();
   const cameraTarget = modelViewer.getCameraTarget();
-  modelViewer.src = name;
+  modelViewer.src =`${name}.glb`;
+  modelViewer.iosSrc =`${name}.usdz`;
   modelViewer.cameraTarget = `${cameraTarget.x}m ${cameraTarget.y}m ${cameraTarget.z}m`;
   modelViewer.cameraOrbit = `${cameraOrbit.theta}rad ${cameraOrbit.phi}rad ${cameraOrbit.radius}m`;
-  modelViewer.poster = 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363';
   const icons= document.querySelectorAll(".icon1");
   icons.forEach((element) => {element.classList.remove("selected");});
   element.classList.add("selected");
 };
 
-window.switchModel = (element, modelviewer, target, zoom, name) => {
-  const modelViewer = document.querySelector(modelviewer);
-  modelViewer.src = name;
-  modelViewer.cameraTarget = target;
-  modelViewer.cameraOrbit = zoom;
-  modelViewer.poster = 'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363';
+window.switchModel = (element, element1, text, target, zoom, name) => {
+  if(name == 'kolin_1500'){
+    name = kolin_1500_path;
+  }
+  if(name == 'kolin_GIS'){
+    name = kolin_gis_path;
+  }
+  if(name == 'kolin_hrad'){
+    name = kolin_hrad_path;
+  }
+  if(name == 'zvonice_baroko'){
+    name = kolin_zvonice_path;
+  }
+  const modelViewer = document.querySelector('#model_main');
+  modelViewer.src =`${name}.glb`;
+  modelViewer.iosSrc =`${name}.usdz`;
+  modelViewer.cameraTarget=target;
+  modelViewer.cameraOrbit=zoom;
+  
+  const icons = document.querySelectorAll(".icon");
+  icons.forEach((element) => {element.classList.remove("selected");});
+  
+  const button = document.querySelector(`#${element1}`);
+  button.classList.add("selected");
+  
+  const textHide = document.querySelectorAll(".popis");
+  textHide.forEach((element) => {element.classList.remove("selected");});
+  
+  const textDisplay = document.querySelector(`#${text}`);
+  textDisplay.classList.add("selected");
 };
 
 function changePivotpoint(event) {

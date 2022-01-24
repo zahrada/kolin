@@ -6,6 +6,10 @@
     <title>A simple example</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+    <!-- Detect mobile phone or laptop -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.19/ua-parser.min.js"></script>
+
     <style>
       html {
         height: 100%;
@@ -30,6 +34,19 @@
 
 <div id="panorama"></div>
 <script>
+    var ua = new UAParser();
+    var result = ua.getResult();
+
+    if(result.device.type== 'mobile'){
+        //mobile
+      var devicehfov = 10;
+    }
+    else{
+        //notebook
+        var devicehfov = 110;
+    }
+</script>
+<script>
 pannellum.viewer('panorama', {
       "default": {
         "firstScene": "vstup",
@@ -42,7 +59,7 @@ pannellum.viewer('panorama', {
                 "type": "equirectangular",
                 "pitch": 0,
                 "yaw": 0,
-                "hfov": 10,
+                "hfov": devicehfov,
                 "autoLoad": true,
                 "orientationOnByDefault": true,
                 "showZoomCtrl": false,
@@ -78,7 +95,7 @@ pannellum.viewer('panorama', {
                 */
                 {
                     "pitch": 0,
-                    "yaw": -70,
+                    "yaw": -10,
                     "type": "scene",
                     "text": "Nádvoří",
                     "sceneId": "nadvori1"
@@ -91,7 +108,7 @@ pannellum.viewer('panorama', {
             "type": "equirectangular",
             "pitch": 0,
             "yaw": 0,
-            "hfov": 10,
+            "hfov": devicehfov,
             "autoLoad": true,
             "orientationOnByDefault": true,
             "showZoomCtrl": false,
@@ -100,21 +117,21 @@ pannellum.viewer('panorama', {
             "hotSpots": [
                 {
                     "pitch": 0,
-                    "yaw": 110,
+                    "yaw": 185,
                     "type": "scene",
                     "text": "Vstup k městu",
                     "sceneId": "vstup"
                 },
                 {
-                    "pitch": -5,
-                    "yaw": 25,
+                    "pitch": 0,
+                    "yaw": 90,
                     "type": "scene",
                     "text": "Nádvoří",
                     "sceneId": "nadvori2"
                 },
                 {
-                    "pitch": -3,
-                    "yaw": -65,
+                    "pitch": 0,
+                    "yaw": 350,
                     "type": "scene",
                     "text": "Most k předhradí",
                     "sceneId": "most"
@@ -127,7 +144,7 @@ pannellum.viewer('panorama', {
             "type": "equirectangular",
             "pitch": 0,
             "yaw": 0,
-            "hfov": 10,
+            "hfov": devicehfov,
             "autoLoad": true,
             "orientationOnByDefault": true,
             "showZoomCtrl": false,
@@ -135,8 +152,8 @@ pannellum.viewer('panorama', {
             "showFullscreenCtrl": true,
             "hotSpots": [
                 {
-                    "pitch": -3,
-                    "yaw": 200,
+                    "pitch": 0,
+                    "yaw": 270,
                     "type": "scene",
                     "text": "Nádvoří",
                     "sceneId": "nadvori1"
@@ -149,7 +166,7 @@ pannellum.viewer('panorama', {
             "type": "equirectangular",
             "pitch": 0,
             "yaw": 0,
-            "hfov": 10,
+            "hfov": devicehfov,
             "autoLoad": true,
             "orientationOnByDefault": true,
             "showZoomCtrl": false,
@@ -158,14 +175,14 @@ pannellum.viewer('panorama', {
             "hotSpots": [
                 {
                     "pitch": 0,
-                    "yaw": 110,
+                    "yaw": 175,
                     "type": "scene",
                     "text": "Nádvoří",
                     "sceneId": "nadvori1"
                 },
                 {
                     "pitch": -5,
-                    "yaw": -70,
+                    "yaw": 0,
                     "type": "scene",
                     "text": "Předhradí",
                     "sceneId": "predhradi"
@@ -177,7 +194,7 @@ pannellum.viewer('panorama', {
             "type": "equirectangular",
             "pitch": 0,
             "yaw": 0,
-            "hfov": 10,
+            "hfov": devicehfov,
             "autoLoad": true,
             "orientationOnByDefault": true,
             "showZoomCtrl": false,
@@ -185,15 +202,15 @@ pannellum.viewer('panorama', {
             "showFullscreenCtrl": true,
             "hotSpots": [
                 {
-                    "pitch": -3,
-                    "yaw": 115,
+                    "pitch": 0,
+                    "yaw": 175,
                     "type": "scene",
                     "text": "Most k předhradí",
                     "sceneId": "most"
                 },
                 {
                     "pitch": -3,
-                    "yaw": -75,
+                    "yaw": -15,
                     "type": "scene",
                     "text": "Vstup z vesnice",
                     "sceneId": "vstup2"
@@ -204,8 +221,8 @@ pannellum.viewer('panorama', {
             "title": "Vstup z vesnice",
             "type": "equirectangular",
             "pitch": 0,
-            "yaw": 0,
-            "hfov": 10,
+            "yaw": 180,
+            "hfov": devicehfov,
             "autoLoad": true,
             "orientationOnByDefault": true,
             "showZoomCtrl": false,
@@ -214,7 +231,7 @@ pannellum.viewer('panorama', {
             "hotSpots": [
                 {
                     "pitch": 0,
-                    "yaw": 110,
+                    "yaw": 175,
                     "type": "scene",
                     "text": "Předhradí",
                     "sceneId": "predhradi"

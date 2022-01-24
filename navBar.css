@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;600&display=swap');
 
+:root {
+  --mobile: 50%;
+  --viewer: 50%;
+  --help: 50vh;
+  --helppop:-45vh;
+}
+
 *{
 	font-family: 'Baloo Paaji 2', cursive;
 	margin: 0;
@@ -12,13 +19,12 @@
 body {
   margin: 0;
   padding: 0;
-  verflow: hidden;
   position: fixed;
   cursor: default;
   width: 100%;
   height: 100%;
   font-family: Google Sans, Noto, Roboto, Helvetica Neue, sans-serif;
-  color: #244376;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar {
@@ -63,7 +69,7 @@ body {
 	position: fixed;
 	top: 0px;
 	left: 0;
-	width: 30%;
+	width: var(--mobile);
 	height: 100%;
 	background: #005faf;
   counter-reset: section;
@@ -160,8 +166,9 @@ body {
   position: absolute;
 	top: 0px;
 	right: 0px;
-	width: 70%;
+	width: var(--viewer);
   height: 100%;
+  background-color: transparent;
 }
 
 block {
@@ -184,6 +191,14 @@ model-viewer {
   --progress-bar-height: 1%;
 }
 
+#annotation{
+  background-color: #888888;
+  position: absolute;
+  transform: translate(10px, 10px);
+  border-radius: 10px;
+  padding: 10px;
+}
+
 
 *, *::after, *::before {
   box-sizing: border-box;
@@ -196,7 +211,7 @@ model-viewer {
   transform: scaleX(0);
   transition: 200ms ease-in-out;
 	background: #005faf;
-  width: 30%;
+  width: var(--mobile);
   height: 100%;
   counter-reset: mysection;
   z-index: 10;
@@ -230,9 +245,7 @@ model-viewer {
   	display: none;
 }
 
-.modal-body. .popis.hide {
-  	display: none;
-}
+
 
 
 .modal-header {
@@ -360,4 +373,110 @@ model-viewer {
 	text-transform: uppercase;
 	letter-spacing: 2px;
   font-family: "Comic Sans MS", "Comic Sans", "cursive";
+}
+
+.help {
+  width: 40px;
+  float: right;
+}
+
+.help .question {
+  position: fixed;
+  height: 40px;
+  width: 40px;
+  background: #ccc;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.help .popup, .help .popup2 {
+  width: 560px;
+  height: 0px;
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+  background: #eee;
+  opacity: 0;
+  transition: 1s;
+}
+
+.help .popup {
+  left: var(--helppop);
+  top: 10px;
+  background-color: transparent;
+}
+
+.help .popup2 {
+  height: 220px;
+}
+
+.help .popup2 h4 {
+  font-size: 18px;
+  padding: 10px;
+  margin: 0;
+}
+
+.help:hover .popup {
+  opacity: 1;
+  width: var(--help);
+  height: var(--help);
+}
+
+.help .tell-me p:first-child {
+  color: #317eac;
+  cursor: pointer;
+}
+
+.tell-me {
+  width: 150px;
+}
+
+.help .tell-me:hover .popup2 {
+  top: -220px;
+  opacity: 1;
+}
+
+.help .popup h3 {
+  margin: 0;
+  padding: 10px 0 0 10px;
+  height: 30px;
+  background: #555;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.help .popup p {
+  font-size: 16px;
+  padding: 10px;
+  margin: 0;
+}
+
+.help .popup .popup2 .sub-levels {
+  padding: 0 0 10px 140px;
+}
+
+.help .popup .popup2 .sub-levels strong {
+  font-size: 20px;
+}
+
+.help .popup .popup2 p:nth-child(5) {
+  padding: 20px 0 0 10px;
+}
+
+.help .popup a {
+  text-decoration: none;
+  color: #317eac;
+}
+
+.help .popup a:visited {
+  color: #317eac;
+}
+
+.help .popup p em {
+  font-size: 12px;
 }

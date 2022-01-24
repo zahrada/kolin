@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE html>¨
+<?php $kolin_1500 = "./assets/kolin_1500.gltf"; ?>
+
 <html lang="cz">
   <head>
     <title>Kolin zpatky v case</title>
@@ -9,6 +11,9 @@
     <link rel="stylesheet" href="navBar.css">
     
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+    <!-- Detect mobile phone or laptop -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.19/ua-parser.min.js"></script>
     
     <!-- The following libraries and polyfills are recommended to maximize browser support -->
     <!-- NOTE: you must adjust the paths as appropriate for your project -->
@@ -29,19 +34,38 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer@1.9.1/dist/model-viewer.min.js"> </script>
     <!-- Loads <model-viewer> for old browsers like IE11: -->
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
-    
-    <script type="module">
-      const posters = ['https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta6.jpg?v=1631713304938',
-                       'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta7.jpg?v=1631713313438', 
-                       'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta.jpg?v=1631713457285',
-                       'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta1.jpg?v=1631713460874',
-                        'https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fveduta3.jpg?v=1631713464690'];
-    
-      let i = 0;
-      const modelViewer1 = document.querySelector('#model_main');
-      setInterval(() => modelViewer1.setAttribute('poster', `${posters[++i % 5]}`), 2000);
-    </script>
+    <script>
+      var ua = new UAParser();
+      var result = ua.getResult();
+      var ano = false;
 
+      if(result.device.type== 'mobile'){
+        //path
+        var kolin_1500_path = './assets/kolin_1500_low';
+        var kolin_gis_path = './assets/kolin_GIS_low';
+        var kolin_hrad_path = './assets/kolin_hrad_low';
+        var kolin_zvonice_path = './assets/kolin_kostel_vez_hist';
+
+        // set CSS
+        var r = document.querySelector(':root');
+        r.style.setProperty('--mobile', '70%');
+        r.style.setProperty('--viewer', '30%');
+      }
+      else{
+        //path
+        var kolin_1500_path = './assets/kolin_1500';
+        var kolin_gis_path = './assets/kolin_GIS';
+        var kolin_hrad_path = './assets/kolin_hrad';
+        var kolin_zvonice_path = './assets/kolin_kostel_vez_hist';
+
+        // set CSS
+        var r = document.querySelector(':root');
+        r.style.setProperty('--mobile', '30%');
+        r.style.setProperty('--viewer', '70%');
+        r.style.setProperty('--help', '800px');
+        r.style.setProperty('--helppop', '-800px');
+      }
+    </script>
   </head> 
   <body> 
   
@@ -52,81 +76,155 @@
           <li>
             <a href="#">
               <div class="modal-header">
-                <div class="title">kolín</div>
-                <span class="text" onclick="back(this,'./assets/kolin_GIS.gltf')">ZAVŘÍT</span>
+                <span class="title">kolín - královské město</span>
+                <span class="text" onclick="back(this)">ZAVŘÍT</span>
               </div>
             </a>
-            <a href="#"></a>
+            <a href="pano_mesto.html">
+              <span class="text">Historická virtuální prohlídka</span>
+            </a>
+            <a href="https://sketchfab.com/zahradnik.geodet.dz/collections/kolin">
+              <span class="text">Modely Sketchfab</span>
+		  	  	</a>
           </li>
           <li>
 	  		    <a href="#">
-              <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_1500.gltf')">Minulost</span>
-              <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
+              <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_1500')">Minulost</span>
+              <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_GIS')">21.stol</span>
 		  	  	</a>
-            <a href="#"></a>
+            <a href="#">
+            </a>
 		  	   </li>
 	    	  <li>
 	    		  <a href="#">
-              <span class="icon" id = "button1" onclick="zoomCamera(this,'button1','text','-134m 0m -248m','60deg 20deg 100m')"></span>
+              <span class="icon" id = "button1" onclick="zoomCamera(this,'button1','menu_zamek','-134m 0m -248m','60deg 20deg 100m')"></span>
 		    		  <span class="text" 
                     data-modal-target="#zamek" 
-                    onclick="zoomCamera(this,'button1','text','-134m 0m -248m','60deg 20deg 100m')">
+                    onclick="switchModel(this,'button1','menu_zamek','-134m 0m -248m','60deg 20deg 100m','kolin_GIS')">
                 Zámek a pivovar
               </span>
 		    	  </a>
 		      </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button9" onclick="zoomCamera(this,'button9','text','40m 30m 75m','0deg 60deg 100m')"></span>
+              <span class="icon" id = "button9" onclick="zoomCamera(this,'button9','menu_kostel','40m 30m 75m','0deg 60deg 100m')"></span>
               <span class="text" 
                     data-modal-target="#kostel"
-                    onclick="zoomCamera(this,'button9','text','40m 30m 75m','0deg 60deg 100m')">
+                    onclick="switchModel(this,'button9','menu_kostel','40m 30m 75m','0deg 60deg 100m','kolin_GIS')">
                 kostel sv. Bartoloměje
               </span>
 		  	  	</a>
 		  	   </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button10" onclick="zoomCamera(this,'button10','text','56m 0m 108m','10deg 0deg 100m')"></span>
+              <span class="icon" id = "button10" onclick="zoomCamera(this,'button10','menu_parkan','56m 0m 108m','10deg 0deg 100m')"></span>
               <span class="text" 
                     data-modal-target="#parkan"
-                    onclick="zoomCamera(this,'button10','text','56m 0m 108m','10deg 0deg 100m')">
+                    onclick="switchModel(this,'button10','menu_parkan','56m 0m 108m','10deg 0deg 100m','kolin_GIS')">
                 Parkán
               </span>
 		  	  	</a>
 		  	   </li>
           <li>
 	  		    <a href="#">
-              <span class="icon" id = "button11" onclick="zoomCamera(this,'button11','text','9m 30m 39m' ,'150deg 10deg 80m')"></span>
+              <span class="icon" id = "button11" onclick="zoomCamera(this,'button11','menu_zvonice','9m 30m 39m' ,'150deg 10deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#zvonice"
-                    onclick="zoomCamera(this,'button11','text','9m 30m 39m' ,'150deg 10deg 80m')">
+                    onclick="switchModel(this,'button11','menu_zvonice','9m 30m 39m' ,'150deg 10deg 100m','kolin_GIS')">
                 Zvonice
               </span>
 		  	  	</a>
 		  	   </li>
            <li>
 	  		    <a href="#">
-              <span class="icon" id = "button2" onclick="zoomCamera(this,'button2','text','-195m 0m -121m','270deg 60deg 80m')"></span>
+              <span class="icon" id = "button2" onclick="zoomCamera(this,'button2','menu_basta','-195m 0m -121m','270deg 60deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#basta"
-                    onclick="zoomCamera(this,'button2','text','-195m 0m -121m','270deg 60deg 80m')">
+                    onclick="switchModel(this,'button2','menu_basta','-195m 0m -121m','270deg 60deg 100m','kolin_GIS')">
                 Bašta
               </span>
 		  	  	</a>
 		  	   </li>
-          <!--
+          <li>
+	  		    <a href="#">
+              <span class="icon" id = "button4" onclick="zoomCamera(this,'button4','menu_kourim','-48m 0m 57m','0deg 50deg 80m')"></span>
+              <span class="text" 
+                    data-modal-target="#kourimska"
+                    onclick="switchModel(this,'button4','menu_kourim','-48m 0m 57m','340deg 50deg 100m','kolin_1500')">
+                Kouřimská brána
+              </span>
+		  	  	</a>
+		  	   </li>
+           <li>
+	  		    <a href="#">
+              <span class="icon" id = "button5" onclick="zoomCamera(this,'button5','menu_caslav','125m 0m 19m','80deg 50deg 80m')"></span>
+              <span class="text" 
+                    data-modal-target="#caslavska"
+                    onclick="switchModel(this,'button5','menu_caslav','125m 0m 19m','60deg 50deg 100m','kolin_1500')">
+                Čáslavská brána
+              </span>
+		  	  	</a>
+		  	   </li>
+           <li>
+	  		    <a href="#">
+              <span class="icon" id = "button6" onclick="zoomCamera(this,'button6','menu_labska','204m 0m -107m','80deg 50deg 80m')"></span>
+              <span class="text" 
+                    data-modal-target="#labska"
+                    onclick="switchModel(this,'button6','menu_labska','204m 0m -107m','120deg 50deg 100m','kolin_1500')">
+                Labská brána
+              </span>
+		  	  	</a>
+		  	   </li>
+           <li>
+	  		    <a href="#">
+              <span class="icon" id = "button7" onclick="zoomCamera(this,'button7','menu_prazska','-151m 0m -145m','80deg 50deg 80m')"></span>
+              <span class="text" 
+                    data-modal-target="#prazska"
+                    onclick="switchModel(this,'button7','menu_prazska','-151m 0m -145m','65deg 50deg 100m','kolin_1500')">
+                Pražská brána
+              </span>
+		  	  	</a>
+		  	   </li>
+              <div class="modal-body">
+                <p class="popis" id = "menu_zamek">
+                  Zámek, původně hrad a prapůvodně zde stál dominikánský klášter, který zmiňují jen písemné prameny.
+                </p>
+                <p class="popis" id = "menu_kostel">
+                  Pro stavbu kostela musel být zvednut původní terén, jenž naznačuje hradní branka u kostnice zapuštěná do země.
+                </p>
+                <p class="popis" id = "menu_zvonice">
+                  Zvony kostela sv. Bartoloměje byly tak težké, že pro ně musela být vybunována nová a samostatná zvonice.
+                </p>
+                <p class="popis" id = "menu_basta">
+                  Poslední dochovaná parkánová bašta. Prvně ji obývali vojáci, potom měšťáné a dnes už jsou zde pouze netopýři a myši.
+                </p>
+                <p class="popis" id = "menu_parkan">
+                  Parkán
+                </p>
+                <p class="popis" id = "menu_kourim">
+                  Kouřimská brána
+                </p>
+                <p class="popis" id = "menu_caslav">
+                  Čáslavská brána
+                </p>
+                <p class="popis" id = "menu_labska">
+                  Labská brána
+                </p>
+                <p class="popis" id = "menu_prazska">
+                  Poslední postavenou bránou byla Pražská nebo nová Pražská brána. Vznikla při stavbě hradu Kolín.
+                </p>
+              </div>
+           <!--
            <li>
           	<a href="#">
               <span class="icon" id = "button14" onclick="zoomCamera(this,'button14','#model_main','57m 0m 109m','80deg 60deg 80m')"></span>
               <span class="text" 
                     data-modal-target="#kostnice"
-                    onclick="switchModel(this, '#model_main', '57m 0m 109m','80deg 60deg 80m', './assets/kolin_GIS.gltf')">
+                    onclick="zoomCamera(this,'button14','#model_main','57m 0m 109m','80deg 60deg 80m')">
                 Kostnice
               </span>
 		  	  	</a>
 		  	   </li>
-           -->
           <li>
 	  		    <a href="#">
               <span class="icon" id = "button3" onclick="zoomCamera(this,'button3','text','-170m 0m -93m','80deg 50deg 80m')"></span>
@@ -144,46 +242,6 @@
                     data-modal-target="#radnice"
                     onclick="zoomCamera(this,'button8','text','20m 0m -170m','0deg 50deg 80m')">
                 Radnice
-              </span>
-		  	  	</a>
-		  	   </li>
-          <li>
-	  		    <a href="#">
-              <span class="icon" id = "button4" onclick="zoomCamera(this,'button4','text','-48m 0m 57m','0deg 50deg 80m')"></span>
-              <span class="text" 
-                    data-modal-target="#kourimska"
-                    onclick="zoomCamera(this,'button4','text','-48m 0m 57m','0deg 50deg 80m')">
-                Kouřimská brána
-              </span>
-		  	  	</a>
-		  	   </li>
-           <li>
-	  		    <a href="#">
-              <span class="icon" id = "button5" onclick="zoomCamera(this,'button5','text','125m 0m 19m','80deg 50deg 80m')"></span>
-              <span class="text" 
-                    data-modal-target="#caslavska"
-                    onclick="zoomCamera(this,'button5','text','125m 0m 19m','80deg 50deg 80m')">
-                Čáslavská brána
-              </span>
-		  	  	</a>
-		  	   </li>
-           <li>
-	  		    <a href="#">
-              <span class="icon" id = "button6" onclick="zoomCamera(this,'button6','text','204m 0m -107m','80deg 50deg 80m')"></span>
-              <span class="text" 
-                    data-modal-target="#labska"
-                    onclick="zoomCamera(this,'button6','text','204m 0m -107m','80deg 50deg 80m')">
-                Labská brána
-              </span>
-		  	  	</a>
-		  	   </li>
-           <li>
-	  		    <a href="#">
-              <span class="icon" id = "button7" onclick="zoomCamera(this,'button7','text','-151m 0m -145m','80deg 50deg 80m')"></span>
-              <span class="text" 
-                    data-modal-target="#prazska"
-                    onclick="zoomCamera(this,'button7','text','-151m 0m -145m','80deg 50deg 80m')">
-                Pražská brána
               </span>
 		  	  	</a>
 		  	   </li>
@@ -255,8 +313,8 @@
         </li>
         <li>
           <a href="#">
-            <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_hrad.glb')">Minulost</span>
-            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_hrad')">Hrad</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_GIS')">21.stol</span>
           </a>
           <a href="#"></a>
         </li>
@@ -298,19 +356,19 @@
       </ul>
       <div class="modal-body">
         <p class="popis" id = "zame1">
-          Tohle je zámek.
+          V prvnostních počátcích města v místě hradu byla Pražská brána a hlavní zeď opevnění.
         </p>
         <p class="popis" id = "zame2">
-          Tohle je pivovar.
+          Součástí předhradí byl též pivovar, ve kterém sládek vařil pivo.
         </p>
         <p class="popis" id = "zame3">
-          Tohle je vstup.
+          Věž pro vstup do předhradí.
         </p>
         <p class="popis" id = "zame4">
-          Tohle je věž.
+          Původní věž, která možná byla součástí opevnění města.
         </p>
         <p class="popis" id = "zame5">
-          Tohle je věž1.
+          Původní věž, která byla součástí opevnění města.
         </p>
       </div>
       <p data-close-button class="close-button"></i></p>
@@ -329,8 +387,8 @@
         </li>
         <li>
           <a href="#">
-            <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_1500.gltf')">1300</span>
-            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_1500')">1300</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_GIS')">21.stol</span>
           </a>
           <a href="#"></a>
         </li>
@@ -361,16 +419,16 @@
       </ul>
       <div class="modal-body">
         <p class="popis" id = "koste1">
-          Tohle je kostel.
+          
         </p>
         <p class="popis" id = "koste2">
-          Tohle je vstup.
+          Vstup do kostela je nejstarší dochovalá část kostela.
         </p>
         <p class="popis" id = "koste3">
-          Tohle je Kokovská kaple
+          Kokovská kaple
         </p>
         <p class="popis" id = "koste4">
-          Tohle je Parléřůc chór.
+          Pokud prozkoumáte Parléřův chór blíže, zjistítě, že každé okno je jedinečné.
         </p>
       </div>
       <p data-close-button class="close-button"></i></p>
@@ -389,8 +447,8 @@
         </li>
         <li>
           <a href="#">
-            <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_kostel_vez_hist.glb')">Baroko</span>
-            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', 'zvonice_baroko')">Baroko</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_GIS')">21.stol</span>
           </a>
           <a href="#"></a>
         </li>
@@ -480,20 +538,14 @@
             </div>
           </a>
           <a href="#">
-            <span class="icon1" onclick="switchSrc(this, '#model_main', './assets/kolin_1500.gltf')">Minulost</span>
-            <span class="icon1 selected" onclick="switchSrc(this, '#model_main', './assets/kolin_GIS.gltf')">21.stol</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_1500')">Minulost</span>
+            <span class="icon1" onclick="switchSrc(this, '#model_main', 'kolin_GIS')">21.stol</span>
           </a>
         </li>
         <li>
           <a href="#">
             <span class="icon" id = "parkan1" onclick="zoomCamera(this,'parkan1','parka1','50m 5m 100m','80deg 80deg 40m')"></span>
             <span class="text" onclick="zoomCamera(this,'parkan1','parka1','50m 5m 100m','80deg 40deg 40m')">Kostnice</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon" id = "parkan2" onclick="zoomCamera(this,'parkan2','parka2','75m 5m 75m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'parkan2','parka2','75m 5m 75m','80deg 40deg 40m')">Muzeum</span>
           </a>
         </li>
         <li>
@@ -508,31 +560,16 @@
             <span class="text" onclick="zoomCamera(this,'parkan5','parka5','42m -0.5m 101m','200deg 20deg 40m')">Hradební branka</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <span class="icon" id = "parkan6" onclick="zoomCamera(this,'parkan6','parka6','-15m 5m 76m','80deg 80deg 40m')"></span>
-            <span class="text" onclick="zoomCamera(this,'parkan6','parka6','-15m 5m 76m','0deg 40deg 70m')">Stará farní škola</span>
-          </a>
-        </li>
       </ul>
       <div class="modal-body">
         <p class="popis" id = "parka1">
-          Tohle je kostnice.
-        </p>
-        <p class="popis" id = "parka2">
-          Tohle je muzeum.
-        </p>
-        <p class="popis" id = "parka3">
-          Tohle je wc.
+          Na místě kostnice stála věž hlavní hradby
         </p>
         <p class="popis" id = "parka4">
-          Tohle je hradební věž.
+          Torzo jedné z věží hlavní hradby.
         </p>
         <p class="popis" id = "parka5">
-          Tohle je hradební branka.
-        </p>
-        <p class="popis" id = "parka6">
-          Tohle je hradební stará farní škola.
+          Zapušťění hradební branky dokazuje, že zde byl navýšen původní terén.
         </p>
       </div>
       <p data-close-button class="close-button"></i></p>
@@ -582,26 +619,34 @@
       </iframe>
     </div>   
   -->
-  <!--
-                      alt="Kolin"
-                  shadow-intensity="1"
-                  minimumRenderScale ="0.25"
-                  modelCacheSize ="3"
-                  powerPreference = "low-power"
-                  environment-image = "neutral"
-                  camera-controls alt="A 3D model carousel"
-  -->
     <div class="main_container">
           <model-viewer id="model_main"
                   ondblclick="changePivotpoint(event)"
-                  src="./assets/kolin_GIS.gltf"
-                  ios-src="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Fkourimska_brana.usdz?v=1628592919516"
-                  poster="https://cdn.glitch.com/656ce103-95c6-4bb9-b176-297d9e2dc19d%2Flogo_kolin.jpg?v=1630933674363"
+                  src="./assets/kolin_uvod.glb"
+                  ios-src="./assets/kolin_uvod.usdz"
+                  poster="./assets/logo_kolin.jpg"
                   ar ar-modes="scene-viewer quick-look webxr"
+                  touch-action="none"
+                  shadow-intensity="1"
+                  modelCacheSize ="1"
+                  interaction-prompt = "none"
+                  powerPreference = "low-power"
+                  environment-image = "neutral"
+                  minimumRenderScale ="0.5"
                   camera-controls camera-target="0m 0m 0m"
+                  camera-controls camera-orbit="'0deg 0deg 600m'"
                   camera-controls max-camera-orbit ="Infinity 100deg 600m"
                   camera-controls min-camera-orbit ="-Infinity -20deg 20m">            
             </model-viewer>
+      </div>
+      <div class="help">
+  
+        <div class="question">?</div>
+      
+        <div class="popup">
+          <img src="./assets/help.png"  style="width:100%;height:100%;background: transparent;">
+        </div>
+      
       </div>
 </body>
 </html>
